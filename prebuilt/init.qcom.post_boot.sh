@@ -64,12 +64,6 @@ case "$target" in
 	 chmod 220 /sys/devices/system/cpu/mfreq
 	 chown root.system /sys/devices/system/cpu/cpu1/online
 	 chmod 664 /sys/devices/system/cpu/cpu1/online
-        echo "0,1,2,4,9,15" > /sys/module/lowmemorykiller/parameters/adj
-	echo 1 > /sys/module/lowmemorykiller/parameters/chack_filepages
-	echo 32 > /sys/module/lowmemorykiller/parameters/cost
-	echo 2 > /sys/module/lowmemorykiller/parameters/debug_level
-	echo "2048,3072,4096,6144,8192,12288" > /sys/module/lowmemorykiller/parameters/minfile
-	echo "6379,8125,9871,11919,13665,16855" > /sys/module/lowmemorykiller/parameters/minfree
         ;;
 esac
 
@@ -86,8 +80,9 @@ esac
 # Post-setup services
 case "$target" in
     "msm8660")
+         start thermald
         #start mpdecision
-        #start thermald
+        
     ;;
 esac
 
